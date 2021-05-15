@@ -38,6 +38,8 @@ export default new Vuex.Store({
     filter: null,
     quizNum: null,
     randomize: true,
+
+    quizQueue: []
   },
   getters: {
     // getterではstateから算出したプロパティを返している.
@@ -50,12 +52,28 @@ export default new Vuex.Store({
         // labelIds配列でfilterの値の添字を検索する. 存在すれば0以上が返るのでその場合trueになるようにしてfilteringする.
         return quiz.labelIds.indexOf(state.filter) >= 0
       })
+    },
+    quizQueue(state) {
+      return state.quizQueue
     }
   },
   mutations: {
-    quizInit(state, {quizNum, randomize}) {
+    quizInit(state, {quizNum, randomize, filteredQuizSet}) {
       state.quizNum = quizNum
       state.randomize = randomize
+      if (randomize) {
+        let randomArray = []
+        Object.assign(randomArray, filteredQuizSet)
+        for (let i=randomArray.length; 1<i; i--) {
+          let k = Math.floor(Math.random() * i);  // 0 から i-1 までの乱数を生成
+          [randomArray[k], randomArray[i-1]] = [randomArray[i-1], randomArray[k]];
+        }
+        Object.assign(state.quizQueue, randomArray.slice(0,quizNum))
+      } else {
+        for (let i=0; i<quizNum; i++) {
+          state.quizQueue.push(filteredQuizSet[0])
+        }
+      }
     },
     addProblem(state, { question, questionType, answer, description, labelIds }) {
       state.problemData.push({
@@ -78,6 +96,7 @@ export default new Vuex.Store({
     },
 
     changeFilter(state, { filter }) {
+      console.log(filter)
       state.filter = filter
     },
 
