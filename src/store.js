@@ -36,6 +36,8 @@ export default new Vuex.Store({
     nextQuizId: 2,
     nextLabelId: 2,
     filter: null,
+    quizNum: null,
+    randomize: true,
   },
   getters: {
     // getterではstateから算出したプロパティを返している.
@@ -51,6 +53,10 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    quizInit(state, {quizNum, randomize}) {
+      state.quizNum = quizNum
+      state.randomize = randomize
+    },
     addProblem(state, { question, questionType, answer, description, labelIds }) {
       state.problemData.push({
         id: state.nextQuizId,
