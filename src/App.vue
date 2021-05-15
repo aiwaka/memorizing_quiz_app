@@ -37,6 +37,7 @@
       <v-btn :to="{name: 'home'}" text exact-active-class="green">Home</v-btn>
       <v-btn :to="{name: 'about'}" text exact-active-class="green">About</v-btn>
       <v-btn :to="{name: 'quiz'}" text exact-active-class="green">Quiz</v-btn>
+      <v-btn :to="{name: 'list'}" text exact-active-class="green">List</v-btn>
     </v-app-bar>
 
     <v-main>
