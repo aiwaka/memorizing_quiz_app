@@ -10,6 +10,7 @@
                 >{{label.text}}</v-btn>
                 <v-btn class="text-caption" :value="null">No Filter</v-btn>
             </v-btn-toggle>
+            <v-card-text>問題総数：{{maxQuizNum}}</v-card-text>
             <v-slider
                 class="ma-6"
                 v-model="quizNum"
@@ -63,6 +64,7 @@ export default {
                 randomize: this.randomize,
                 filteredQuizSet: this.$store.getters.filteredQuiz,
             })
+            console.log(this.$store.state.quizQueue)
             this.$emit('start')
         },
         changeFilter(id) {

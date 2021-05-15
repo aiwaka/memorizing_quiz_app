@@ -1,6 +1,10 @@
 <template>
     <div class="quiz-block">
-        <QuizOneAnswer v-if="quizData.questionType==0" :quizData="quizData"></QuizOneAnswer>
+        <QuizOneAnswer
+            v-if="quizData.questionType==0"
+            :quizData="quizData"
+            v-on:next="next"
+        />
     </div>
 </template>
 
@@ -14,6 +18,13 @@ export default {
         quizData: {
            type: Object,
            required: true
+        }
+    },
+    methods: {
+        next({correctness}) {
+            this.$emit('next', {
+                correctness
+            })
         }
     }
 }

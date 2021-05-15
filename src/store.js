@@ -39,7 +39,8 @@ export default new Vuex.Store({
     quizNum: null,
     randomize: true,
 
-    quizQueue: []
+    quizQueue: [],
+    nextQuiz: null,
   },
   getters: {
     // getterではstateから算出したプロパティを返している.
@@ -55,10 +56,11 @@ export default new Vuex.Store({
     },
     quizQueue(state) {
       return state.quizQueue
-    }
+    },
   },
   mutations: {
     quizInit(state, {quizNum, randomize, filteredQuizSet}) {
+      // 問題数, 乱数を受け取り問題のキューを作る. stateのquizQueueにセットする.
       state.quizNum = quizNum
       state.randomize = randomize
       if (randomize) {
@@ -70,10 +72,11 @@ export default new Vuex.Store({
         }
         Object.assign(state.quizQueue, randomArray.slice(0,quizNum))
       } else {
-        for (let i=0; i<quizNum; i++) {
-          state.quizQueue.push(filteredQuizSet[0])
-        }
+        Object.assign(state.quizQueue, filteredQuizSet.slice(0,quizNum))
       }
+    },
+    popQuiz(state) {
+      state.nextQuiz = state.quizQueue.shift()
     },
     addProblem(state, { question, questionType, answer, description, labelIds }) {
       state.problemData.push({

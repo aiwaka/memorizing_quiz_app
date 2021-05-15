@@ -10,7 +10,13 @@
                             <v-text-field label="Answer" v-model="userInput"/>
                         </v-col>
                         <v-col cols="2">
-                            <v-btn v-on:click="check()">Check</v-btn>
+                            <v-btn
+                                rounded
+                                text
+                                outlined
+                                v-on:click="check()"
+                                :disabled="answered"
+                            >Check</v-btn>
                         </v-col>
                     </v-row>
                 </v-container>
@@ -33,6 +39,14 @@
                         </v-card-actions>
                     </v-card>
                 </v-expand-transition>
+                <v-card-actions>
+                    <v-btn
+                        rounded
+                        text
+                        outlined
+                        v-on:click="next()"
+                    >Next</v-btn>
+                </v-card-actions>
             </v-card>
         </v-card>
 
@@ -55,7 +69,19 @@ export default {
            required: true,
        }
    },
+   watch: {
+       // eslint-disable-next-line no-unused-vars
+       quizData(newVal, oldVal) {
+           this.init()
+       }
+   },
    methods: {
+       init() {
+           this.userInput = null
+           this.corrected = false
+           this.revealDesc = false
+           this.answered = false
+       },
        check() {
            this.answered = true
            this.corrected = this.quizData.answer[0] === this.userInput
@@ -64,6 +90,9 @@ export default {
            } else {
                this.revealDesc = true
            }
+       },
+       next() {
+           this.$emit('next', {correctness: this.corrected})
        }
    }
 }
