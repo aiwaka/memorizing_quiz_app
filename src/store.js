@@ -96,7 +96,6 @@ export default new Vuex.Store({
     },
 
     changeFilter(state, { filter }) {
-      console.log(filter)
       state.filter = filter
     },
 
