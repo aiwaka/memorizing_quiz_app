@@ -10,16 +10,23 @@
             :quizData="quizData"
             v-on:next="next"
         />
+        <quiz-select
+            v-if="parseInt(quizData.questionType)===2"
+            :quizData="quizData"
+            v-on:next="next"
+        />
     </div>
 </template>
 
 <script>
 import QuizOneAnswer from '@/components/QuizOneAnswer.vue'
 import QuizFilling from '@/components/QuizFilling.vue'
+import QuizSelect from '@/components/QuizSelect.vue'
 export default {
     components: {
         QuizOneAnswer,
         QuizFilling,
+        QuizSelect,
     },
     props: {
         quizData: {
