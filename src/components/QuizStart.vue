@@ -32,8 +32,6 @@
 
 <script>
 export default {
-    components: {
-    },
     data: () => {
         return {
             quizNum: 1,

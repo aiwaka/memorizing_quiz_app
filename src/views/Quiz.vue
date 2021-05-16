@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import QuizBlock from '@/components/QuizBlock.vue'
-import QuizStart from '@/components/QuizStart.vue'
-import QuizResult from '@/components/QuizResult.vue'
+import QuizBlock from '../components/QuizBlock.vue'
+import QuizStart from '../components/QuizStart.vue'
+import QuizResult from '../components/QuizResult.vue'
 export default {
     components: {
         QuizBlock,

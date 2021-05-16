@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import QuizBlock from '@/components/QuizBlock.vue'
+import QuizBlock from '../components/QuizBlock.vue'
 export default {
     components: {
         QuizBlock,

@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import QuizOneAnswer from '@/components/QuizOneAnswer.vue'
-import QuizFilling from '@/components/QuizFilling.vue'
-import QuizSelect from '@/components/QuizSelect.vue'
+import QuizOneAnswer from './QuizOneAnswer.vue'
+import QuizFilling from './QuizFilling.vue'
+import QuizSelect from './QuizSelect.vue'
 export default {
     components: {
         QuizOneAnswer,

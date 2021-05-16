@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import AnswerCard from '@/components/AnswerCard.vue';
+import AnswerCard from './AnswerCard.vue';
 export default {
     components: {
         AnswerCard
