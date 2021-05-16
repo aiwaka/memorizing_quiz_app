@@ -64,7 +64,6 @@ export default {
                 randomize: this.randomize,
                 filteredQuizSet: this.$store.getters.filteredQuiz,
             })
-            console.log(this.$store.state.quizQueue)
             this.$emit('start')
         },
         changeFilter(id) {
