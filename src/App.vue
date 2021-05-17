@@ -53,6 +53,9 @@
           <v-list-item>
             <v-btn :to="{name: 'list'}" text exact-active-class="green">List</v-btn>
           </v-list-item>
+          <v-list-item>
+            <v-btn :to="{name: 'labels'}" text exact-active-class="green">Labels</v-btn>
+          </v-list-item>
         </v-list>
       </v-menu>
 

@@ -30,6 +30,11 @@ export default new Router({
       path: '/list',
       name: 'list',
       component: () => import('./views/List.vue')
+    },
+    {
+      path: '/labels',
+      name: 'labels',
+      component: () => import('./views/Labels.vue')
     }
   ]
 })
