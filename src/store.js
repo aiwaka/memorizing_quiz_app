@@ -89,7 +89,6 @@ export default new Vuex.Store({
         description,
         labelIds,
       })
-
       state.nextQuizId++
     },
     addLabel(state, { text }) {
@@ -98,6 +97,23 @@ export default new Vuex.Store({
         text
       })
       state.nextLabelId++
+    },
+    deleteLabels(state, {labelIds}) {
+      console.log(state.labels)
+      labelIds.forEach( labelId => {
+        // state.problemData.forEach( prob => {
+        //   const newIds = prob.labelIds.filter(id => id !== labelId)
+        //   prob.labelIds = newIds
+        // })
+        const newLabelIds = state.labels.filter(label => label.id !== labelId)
+        state.labels = newLabelIds
+        console.log(state.labels)
+      })
+    },
+    addLabelToProblem(state, {problemId, labelId}) {
+      state.problemData.find( prob => {
+        prob.id === problemId
+      }).labelIds.push(labelId)
     },
 
     changeFilter(state, { filter }) {

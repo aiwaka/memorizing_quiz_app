@@ -10,7 +10,7 @@
       </v-col>
     </v-row>
     <v-list shaped>
-      <v-list-item-group multiple v-model="model">
+      <v-list-item-group multiple v-model="checkedLabels">
         <v-list-item
           v-for="label in labels"
           :key="label.id"
@@ -31,6 +31,8 @@
         </v-list-item>
       </v-list-item-group>
     </v-list>
+    <div>{{checkedLabels}}</div>
+    <v-btn v-on:click="deleteLabels">Delete Selected</v-btn>
   </div>
 </template>
 
@@ -39,7 +41,7 @@ export default {
     data: () => {
         return {
             newLabelText: '',
-            model: [],
+            checkedLabels: [],
         }
     },
     computed: {
@@ -53,6 +55,15 @@ export default {
           text: this.newLabelText
         })
         this.newLabelText = ''
+      },
+      deleteLabels() {
+        if (this.checkedLabels.length === 0) {
+          alert('ラベルが選択されていません.')
+          return
+        }
+        this.$store.commit('deleteLabels', {
+          labelIds: this.checkedLabels
+        })
       }
     }
 }
