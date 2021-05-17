@@ -64,17 +64,11 @@ export default {
        init() {
            this.userInput = null
            this.corrected = false
-           this.revealDesc = false
            this.answered = false
        },
        check() {
            this.answered = true
            this.corrected = this.quizData.answer[0] === this.userInput
-        //    if(this.corrected) {
-        //        this.revealDesc = false
-        //    } else {
-        //        this.revealDesc = true
-        //    }
        },
        next() {
            this.$emit('next', {correctness: this.corrected})
